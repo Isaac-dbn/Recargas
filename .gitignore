@@ -1,0 +1,4 @@
+*.class
+*.war
+target/classes/.netbeans_automatic_build
+*.jar

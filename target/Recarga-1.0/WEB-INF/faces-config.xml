@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config version="2.3"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+
+    <application>
+        <locale-config>
+            <supported-locale>es_ES</supported-locale>
+        </locale-config>
+    </application>
+
+    <!-- managed-bean>
+        <managed-bean-name>ventasBean</managed-bean-name>
+        <managed-bean-class>com.prueba.recarga.web.beans.VentasBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>ventasServicio</property-name>
+            <value>#{ventasServicio}</value>
+        </managed-property>
+    </managed-bean> -->
+
+
+</faces-config>

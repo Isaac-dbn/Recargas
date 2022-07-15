@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Recargas Online</title>
+    </h:head>
+    <h:body> 
+        <style>
+        /* reset on the showcase style*/
+        body .ui-panelgrid .ui-panelgrid-cell {
+            background-color: transparent;
+        }
+
+        /* example use of styles for your form */
+        .my-heading-row {
+            background-color: var(--surface-c);
+            font-weight: bold;
+        }
+    </style>
+        <h:form>
+            <f:event listener="#{ventasBean.mostrarMensajes()}" type="preRenderView" />
+            <p:growl showSummary="true" showDetail="true" sticky="false" globalOnly="yes" life="7000"  >
+                <p:autoUpdate />
+            </p:growl>
+            <p:panelGrid columns="4"
+                     columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                     layout="grid"
+                     styleClass="ui-panelgrid-blank ui-fluid"
+                     style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row">
+                    Información de recarga
+                </p:row>
+
+                <p:outputLabel for="@next" value="Operador"/>
+                <p:selectOneMenu id="option" value="#{ventasBean.ventas.idOperador}" filter="true" >
+                    <f:selectItem itemLabel="Seleccione" noSelectionOption="true" />
+                    <f:selectItems value="#{ventasBean.listaempresas}" var="empresa"  itemLabel="#{empresa.idEmpresa}" itemValue="#{empresa.empresa}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel for="@next" value="Número celular"/>
+                <p:inputMask id="phone" value="#{ventasBean.ventas.celular}"  mask="(999) 999-9999" validateMask="true"/>
+
+                <p:outputLabel for="@next" value="Valor recarga"/>
+                <p:inputText maxlength="8" value="#{ventasBean.ventas.valorRecarga}" >
+                    <p:keyFilter mask="num" />
+                </p:inputText>
+
+
+
+                <p:row id="my-row-id" styleClass="my-heading-row" style="font-weight: bold">
+                    Información adicional
+                </p:row>
+
+                <p:outputLabel for="@next" value="Vendedor"/>
+                <p:selectOneMenu value="#{ventasBean.ventas.idVendedor}" filter="true" >
+                    <f:selectItem itemLabel="Seleccione" noSelectionOption="true" />
+                    <f:selectItem itemLabel="Option1" itemValue="Option1"/>
+                    <f:selectItem itemLabel="Option2" itemValue="Option2"/>
+                    <f:selectItem itemLabel="Option3" itemValue="Option3"/>
+                </p:selectOneMenu>
+
+
+                <p:row>
+                    <p:column styleClass="ui-grid-col-12">
+                        <p:commandButton value="Realizar recarga" actionListener="#{ventasBean.bienvenida}" styleClass="p-mr-2" style="width: auto"/>
+                        <p:commandButton value="Reject" styleClass="p-mr-2" style="width: auto"/>
+                        <p:commandButton value="Refer" style="width: auto" />
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

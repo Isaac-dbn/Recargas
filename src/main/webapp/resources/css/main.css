@@ -1,0 +1,29 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.cabecera{
+    min-height: 10rem;
+    height: auto;
+     /*background-color: #484A63;*/
+    background-color: #EEF1FF;
+}
+
+.contenido{
+    background-color: #f9f5f5;
+}
+
+.titulo-cabecera {
+    height: auto;
+    color: #d4d4d4;
+    text-align: center;
+    padding: 1rem;
+}
+
+.item-cabecera{
+    height: auto;
+    color: #d4d4d4;
+}

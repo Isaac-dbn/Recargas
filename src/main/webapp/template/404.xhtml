@@ -7,7 +7,7 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>TODO supply a title</title>
+        <title>Error #{errorHandler.statusCode}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
         <!-- Google font -->
@@ -237,8 +237,8 @@ and open the template in the editor.
                         <h1>#{errorHandler.statusCode}</h1>
                     </div>
                 <h2>#{errorHandler.message}</h2>
-                    <p>Es posible que la página que está buscando se haya eliminado, se cambió el nombre o no está disponible temporalmente.</p>
-                    <a href="departamentos">Pagina principal</a>
+                    <p>Es posible que la página que está buscando no exista, se haya eliminado, se cambió el nombre o no está disponible temporalmente.</p>
+                    <a href="recargar">Pagina principal</a>
                     
             </div>
 	</div>

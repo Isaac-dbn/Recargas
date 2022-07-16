@@ -5,9 +5,9 @@
  */
 package com.prueba.recarga.Test;
 
-import com.prueba.recarga.dominio.EmpresaDominio;
+import com.prueba.recarga.dto.EmpresaDto;
 import com.prueba.recarga.repository.IEmpresas;
-import com.prueba.recarga.web.servicio.EmpresaServicio;
+import com.prueba.recarga.repository.IEmpresasImpl;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +23,8 @@ public class EmpresasTest {
      */
     public static void main(String[] args) {
         try {
-            IEmpresas empresa = new EmpresaServicio();
-            List<EmpresaDominio> lista = empresa.getEmpresas();
+            IEmpresas empresa = new IEmpresasImpl();
+            List<EmpresaDto> lista = empresa.getEmpresas();
             lista.forEach(item -> {
                 System.err.println("Empresa : " + item.getEmpresa());
             });

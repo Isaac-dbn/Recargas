@@ -5,7 +5,7 @@
  */
 package com.prueba.recarga.repository;
 
-import com.prueba.recarga.dominio.EmpresaDominio;
+import com.prueba.recarga.dto.EmpresaDto;
 import java.util.List;
 
 /**
@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface IEmpresas  {
     
-    List<EmpresaDominio> getEmpresas() throws Exception ;
+    List<EmpresaDto> getEmpresas() throws Exception ;
     
 }

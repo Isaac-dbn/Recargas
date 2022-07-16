@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Sistema de recargas</title>
+        
+        <h:outputStylesheet name="css/main.css"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
+        
+    </h:head>
+
+    <h:body>
+        
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+            <div class="p-text-center">
+                <i class="pi pi-spin pi-spinner loading-icon" aria-hidden="true"></i>
+            </div>
+        </p:dialog>
+
+        <div id="top" class="">
+            
+            <header>   
+                <!-- Jumbotron -->
+                <div class="p-5 text-center bg-light">
+                  <h3 class="mb-3">SISTEMA DE RECARGAS</h3>
+                  <h6 class="mb-3">Administra todas tus recargas</h6>
+                  <h:link class="btn btn-primary" outcome="/listado" style="margin-right: 0.2rem;" >Listado</h:link>
+                 <h:link class="btn btn-success" outcome="/recargar" >Recargar</h:link> 
+                </div>
+                <!-- Jumbotron -->
+              </header>
+            
+            
+        </div>
+
+        <div id="content" class="contenido">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js" ></script>
+
+    </h:body>
+
+</html>

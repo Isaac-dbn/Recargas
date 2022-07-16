@@ -5,10 +5,15 @@
  */
 package com.prueba.recarga.repository;
 
+import com.prueba.recarga.dto.ProductosDto;
+import java.util.List;
+
 /**
  *
  * @author Chas
  */
 public interface IProductos {
+    
+    List<ProductosDto> getProductos(Integer idEmpresa) throws Exception;
     
 }

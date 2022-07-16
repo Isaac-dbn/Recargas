@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.prueba.recarga.web.servicio;
+package com.prueba.recarga.repository;
 
 import com.prueba.recarga.GenericoJPA;
-import com.prueba.recarga.dominio.EmpresaDominio;
+import static com.prueba.recarga.GenericoJPA.createEntityManager;
+import com.prueba.recarga.dto.EmpresaDto;
 import com.prueba.recarga.entity.Empresas;
-import com.prueba.recarga.repository.IEmpresas;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,11 +16,11 @@ import java.util.List;
  *
  * @author Chas
  */
-public class EmpresaServicio extends GenericoJPA implements IEmpresas{
-
+public class IEmpresasImpl extends GenericoJPA implements IEmpresas{
+    
     @Override
-    public List<EmpresaDominio> getEmpresas() throws Exception{
-        List<EmpresaDominio> empresas = new ArrayList<>();
+    public List<EmpresaDto> getEmpresas() throws Exception{
+        List<EmpresaDto> empresas = new ArrayList<>();
         try {
             String query = " SELECT e FROM Empresas e ";
             List<Empresas> lista = createEntityManager().createQuery(query).getResultList();
@@ -33,8 +33,8 @@ public class EmpresaServicio extends GenericoJPA implements IEmpresas{
         return empresas;
     }
     
-    private EmpresaDominio entidadToDominio(Empresas entidad){
-        EmpresaDominio dominio = new EmpresaDominio();
+    private EmpresaDto entidadToDominio(Empresas entidad){
+        EmpresaDto dominio = new EmpresaDto();
         dominio.setIdEmpresa(entidad.getIdEmpresa());
         dominio.setEmpresa(entidad.getNombre());
         return dominio;

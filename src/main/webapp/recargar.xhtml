@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./template/template.xhtml">
+
+            <ui:define name="content">
+                <style>
+                    /* reset on the showcase style*/
+                    body .ui-panelgrid .ui-panelgrid-cell {
+                        background-color: transparent;
+                    }
+
+                    /* example use of styles for your form */
+                    .my-heading-row {
+                        background-color: var(--surface-c);
+                        font-weight: bold;
+                    }
+                    
+                    .contenido{
+                        background-color: #fbfbfb;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                </style>
+                    <h:form id="frmCrear" style="width: 80%; background-color: #f9f5f5;" >
+                    <f:event listener="#{ventasBean.mostrarMensajes()}" type="preRenderView" />
+                    <p:growl showSummary="true" showDetail="true" sticky="false" globalOnly="yes" life="7000"  >
+                        <p:autoUpdate />
+                    </p:growl>
+                    <p:panelGrid id="panel" columns="4"
+                                 columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                                 layout="grid"
+                                 styleClass="ui-panelgrid-blank ui-fluid"
+                                 style="border:0px none; background-color:transparent;">
+
+                        <p:row styleClass="my-heading-row" >
+                            Detalle
+                        </p:row>
+
+                        <p:outputLabel for="@next" value="Operador"/>
+                        <p:selectOneMenu id="option" value="#{ventasBean.ventas.idOperador.idEmpresa}" filter="true" required="false" requiredMessage="El valor del operador es obligatorio" >
+                            <f:selectItem itemLabel="Seleccione"  noSelectionOption="true" />
+                            <f:selectItems value="#{ventasBean.listaempresas}" var="empresa"  itemLabel="#{empresa.empresa}" itemValue="#{empresa.idEmpresa}"/>
+                            <p:ajax event="change" update="productos" listener="#{ventasBean.consultarProductos}" />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel for="@next" value="Número celular"/>
+                        <p:inputMask id="phone" value="#{ventasBean.ventas.celular}"  mask="(999) 999-9999" validateMask="true"  required="false" requiredMessage="El número de celular es obligatorio" />
+                        
+                        <p:outputLabel for="@next" value="Valor recarga"/>
+                        <p:selectOneMenu id="productos" value="#{ventasBean.ventas.valorRecarga}" filter="true"  >
+                            <f:selectItem itemLabel="Seleccione"  noSelectionOption="true" />
+                            <f:selectItems value="#{ventasBean.listaProducto}" var="producto"  itemLabel="#{producto.producto}" itemValue="#{producto.idProducto}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel for="@next" value="Vendedor"/>
+                        <p:selectOneMenu value="#{ventasBean.ventas.idVendedor.idVendedor}" filter="true" >
+                            <f:selectItem itemLabel="Seleccione" noSelectionOption="true" />
+                            <f:selectItems value="#{ventasBean.listaVendedores}" var="vendedor"  itemLabel="#{vendedor.nombre}" itemValue="#{vendedor.idVendedor}"/>
+                        </p:selectOneMenu>
+                        
+
+
+                        <p:row>
+                            <p:column styleClass="ui-grid-col-12">
+                                <p:commandButton value="Realizar recarga" actionListener="#{ventasBean.guardarRecarga()}" process="@all" styleClass="p-mr-2" style="width: auto"/>                              
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

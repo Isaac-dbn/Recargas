@@ -5,7 +5,8 @@
  */
 package com.prueba.recarga.repository;
 
-import com.prueba.recarga.web.beans.VentasBean;
+import com.prueba.recarga.dto.VentasDto;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,8 @@ import com.prueba.recarga.web.beans.VentasBean;
  */
 public interface IVentas {
     
+    void guardar(VentasDto obj) throws Exception;
     
+    List<VentasDto> consultarVentas() throws Exception;
     
 }

@@ -5,10 +5,15 @@
  */
 package com.prueba.recarga.repository;
 
+import com.prueba.recarga.dto.VenderoresDto;
+import java.util.List;
+
 /**
  *
  * @author Chas
  */
 public interface IVendedores {
+    
+    List<VenderoresDto> getListaVendedores() throws Exception;
     
 }

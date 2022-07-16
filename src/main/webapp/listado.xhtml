@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template/template.xhtml">
+
+            <ui:define name="content">
+
+                <h:form>
+                    <p:dataTable id="dtRecargasWig" widgetVar="dtRecargasWig" var="item" value="#{listaVentasBean.listado}"
+                                 rows="10"
+                                 paginator="true" 
+                                 paginatorPosition="bottom"  
+                                 filterEvent="enter"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                                 >
+                        <f:facet name="header">
+                            <div class="products-table-header">
+                                <span style="font-weight: bold">Lista de recargas </span>
+                            </div>
+                        </f:facet>
+
+                        <p:column headerText="Id" style="font-size: 0.8rem;" >
+                            <h:outputText value="#{item.idVenta}"/>
+                        </p:column>
+                        <p:column headerText="Empresa" filterBy="#{item.idOperador.empresa}" style="font-size: 0.8rem;" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('dtRecargasWig').filter()">
+                                    <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{listaVentasBean.listadoEmpresas}" var="empresa"  itemLabel="#{empresa.empresa}" itemValue="#{empresa.empresa}"/>
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{item.idOperador.empresa}"/>
+                        </p:column>
+                        <p:column headerText="Número" style="font-size: 0.8rem;" >
+                            <h:outputText value="#{item.celular}"  />
+                        </p:column>    
+                        <p:column headerText="Total" >
+                            <h:outputText value="#{item.valorRecarga}"  />
+                        </p:column>      
+                        <p:column headerText="Vendedor" filterBy="#{item.idVendedor.nombre}" style="font-size: 0.8rem;" >
+                            <h:outputText value="#{item.idVendedor.nombre}" />
+                        </p:column>    
+                        <p:column headerText="Fecha recarga" style="font-size: 0.8rem;" >
+                            <h:outputText value="#{item.fecha}" />
+                        </p:column>    
+
+                    </p:dataTable>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

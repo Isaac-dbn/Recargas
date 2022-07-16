@@ -3,27 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.prueba.recarga.dominio;
+package com.prueba.recarga.dto;
 
 /**
  *
  * @author Chas
  */
-public class EmpresaDominio {
+public class EmpresaDto {
     
-    private int idEmpresa;
+    private Integer idEmpresa;
     private String empresa;
 
-    public EmpresaDominio() {
+    public EmpresaDto() {
     }
 
-    public int getIdEmpresa() {
+    public EmpresaDto(int idEmpresa, String empresa) {
+        this.idEmpresa = idEmpresa;
+        this.empresa = empresa;
+    }
+
+    public Integer getIdEmpresa() {
         return idEmpresa;
     }
 
-    public void setIdEmpresa(int idEmpresa) {
+    public void setIdEmpresa(Integer idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
+       
 
     public String getEmpresa() {
         return empresa;
